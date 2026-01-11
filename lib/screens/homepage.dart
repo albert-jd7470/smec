@@ -30,7 +30,7 @@ class _HomepageState extends State<Homepage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "2000",
+                      "3000",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
