@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smec/screens/choosePage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -166,12 +167,16 @@ class _HomepageState extends State<Homepage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Container(
-                            width: 100,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              color: Colors.black12,
-                              borderRadius: BorderRadius.circular(10),
+                          GestureDetector(onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder:  (context) => ChoosePage(),));
+                          },
+                            child: Container(
+                              width: 100,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             ),
                           ),
                           Padding(
