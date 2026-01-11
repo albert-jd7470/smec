@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smec/screens/homepage.dart';
 
+import 'package:smec/screens/profile.dart';
+
+
 class BottomNavig extends StatefulWidget {
   const BottomNavig({super.key});
 
@@ -17,6 +20,9 @@ class _BottomNavigState extends State<BottomNavig> {
     Homepage(),
     Homepage(),
     Homepage(),
+
+    ProfilePage(),
+
   ];
 
   @override
