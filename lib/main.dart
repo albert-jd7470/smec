@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smec/screens/homepage.dart';
-import 'package:smec/screens/profile.dart';
+import 'package:smec/screens/splash_screen.dart';
 import 'package:smec/widgets/navigation.dart';
 
 void main() {
@@ -12,6 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: BottomNavig());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }

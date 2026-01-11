@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smec/screens/loadingscreen.dart';
+import 'package:smec/screens/settings.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,63 +10,91 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  static const Color primaryTeal = Color(0xFF0FA3A9);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F7FB),
+      backgroundColor: const Color(0xFFF4FAFA),
       body: SafeArea(
         child: Column(
           children: [
             // ===== HEADER =====
             Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
+              padding: const EdgeInsets.fromLTRB(20, 24, 20, 30),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [primaryTeal, primaryTeal.withOpacity(0.85)],
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(36),
+                  bottomRight: Radius.circular(36),
+                ),
               ),
               child: Column(
                 children: [
+                  // Top Row (Settings)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.settings, color: Colors.white),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Loadingscreen(nextPage: SettingsPage()),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 8),
+
                   CircleAvatar(
-                    radius: 45,
-                    backgroundColor: Colors.grey.shade300,
-                    child: const Icon(
-                      Icons.person,
-                      size: 50,
+                    radius: 46,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 42,
+                      backgroundColor: primaryTeal.withOpacity(0.15),
+                      child: const Icon(
+                        Icons.person,
+                        size: 46,
+                        color: primaryTeal,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 14),
+
+                  const Text(
+                    'Apple Kadiyan',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'apple kadiyan',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+
                   const SizedBox(height: 4),
+
                   const Text(
-                    'apple kadiyan@email.com',
+                    'applekadiyan@email.com',
                     style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
+                      fontFamily: 'Poppins',
+                      fontSize: 13,
+                      color: Colors.white70,
                     ),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 24),
 
             // ===== INFO CARDS =====
             Padding(
@@ -76,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: 'Phone',
                     value: '000000000',
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   _infoTile(
                     icon: Icons.location_on,
                     title: 'Location',
@@ -98,17 +128,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     label: 'Edit Profile',
                     onTap: () {},
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   _actionButton(
-                    icon: Icons.settings,
-                    label: 'Settings',
+                    icon: Icons.security,
+                    label: 'Privacy & Security',
                     onTap: () {},
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   _actionButton(
                     icon: Icons.logout,
                     label: 'Logout',
-                    color: Colors.red,
+                    color: Colors.redAccent,
                     onTap: () {},
                   ),
                 ],
@@ -131,19 +161,19 @@ class _ProfilePageState extends State<ProfilePage> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: Offset(0, 3),
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Row(
         children: [
           CircleAvatar(
-            backgroundColor: Colors.grey.shade200,
-            child: Icon(icon, color: Colors.black87),
+            backgroundColor: primaryTeal.withOpacity(0.12),
+            child: Icon(icon, color: primaryTeal),
           ),
           const SizedBox(width: 16),
           Column(
@@ -152,7 +182,8 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontFamily: 'Poppins',
+                  fontSize: 12,
                   color: Colors.grey,
                 ),
               ),
@@ -160,6 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 value,
                 style: const TextStyle(
+                  fontFamily: 'Poppins',
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                 ),
@@ -175,22 +207,22 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget _actionButton({
     required IconData icon,
     required String label,
-    Color color = Colors.black,
+    Color color = primaryTeal,
     required VoidCallback onTap,
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(18),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
+          borderRadius: BorderRadius.circular(18),
+          boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              blurRadius: 8,
-              offset: Offset(0, 3),
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
             ),
           ],
         ),
@@ -201,13 +233,14 @@ class _ProfilePageState extends State<ProfilePage> {
             Text(
               label,
               style: TextStyle(
+                fontFamily: 'Poppins',
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: color,
               ),
             ),
             const Spacer(),
-            const Icon(Icons.arrow_forward_ios, size: 16),
+            const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
           ],
         ),
       ),
