@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smec/screens/choosePage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,6 +10,17 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final List<String> courses = [
+    "UI/UX",
+    "Software Testing",
+    "Python Full Stack ",
+    "Full Stack",
+    "Flutter ",
+    "Networking",
+    "Graphics Designing & Film Editing",
+    "MERN Stack Development",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +36,10 @@ class _HomepageState extends State<Homepage> {
                 color: Colors.teal,
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.token,color: Colors.orange,),
+                  Icon(Icons.token, color: Colors.orange),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
@@ -157,39 +170,66 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  for (int i = 0; i < 10; i++)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+
+            SizedBox(
+              height: 150, // 🔥 required
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: courses.length,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChoosePage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 130,
+                      margin: const EdgeInsets.only(right: 14),
                       child: Column(
                         children: [
                           Container(
-                            width: 100,
-                            height: 80,
+                            height: 90,
+                            width: 120,
                             decoration: BoxDecoration(
-                              color: Colors.black12,
-                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.teal,
+                              borderRadius: BorderRadius.circular(14),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.15),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.school,
+                              color: Colors.white,
+                              size: 36,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Text(
-                              "course",
-                              style: TextStyle(
-                                color: Colors.teal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Kufam',
-                              ),
+                          const SizedBox(height: 8),
+                          Text(
+                            courses[index],
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.teal,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Kufam',
                             ),
                           ),
                         ],
                       ),
                     ),
-                ],
+                  );
+                },
               ),
             ),
             Row(

@@ -21,8 +21,8 @@ class _BottomNavigState extends State<BottomNavig> {
     Homepage(),
     ChallengePage(),
     Homepage(),
-
-    ProfilePage(),
+    ProfilePage()
+    // ProfilePage(),
 
   ];
 

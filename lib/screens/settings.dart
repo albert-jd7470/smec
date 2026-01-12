@@ -24,6 +24,15 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_sharp,
+            color: Colors.teal,
+          ),
+        ),
         backgroundColor: bgColor,
         elevation: 0,
         iconTheme: const IconThemeData(color: textPrimary),
