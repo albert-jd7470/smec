@@ -9,7 +9,7 @@ class ChoosePage extends StatefulWidget {
 }
 
 class _ChoosePageState extends State<ChoosePage> {
-  final List level=[
+  final List<String> level = [
     "Beginner",
     "Medium",
     "Professional",
@@ -19,85 +19,79 @@ class _ChoosePageState extends State<ChoosePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => Homepage()),
-            );
+            Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios_sharp,color: Colors.teal,),
+          icon: const Icon(
+            Icons.arrow_back_ios_sharp,
+            color: Colors.teal,
+          ),
         ),
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border:   Border.all(
-                  color: Colors.black,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            height: 380, // 🔥 important
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: Colors.black12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.12),
+                  blurRadius: 10,
+                  offset: const Offset(0, 7),
                 ),
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.12),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                    offset: const Offset(0, 7), // x, y
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(itemBuilder: (context, index) {
-
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 100,
-                          width: double.maxFinite,
-                          decoration: BoxDecoration(
-                            color: Colors.teal,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.12),
-                                blurRadius: 10,
-                                spreadRadius: 2,
-                                offset: const Offset(0, 7),
-                              ),
-                            ],
+              ],
+            ),
+            child: ListView.builder(
+              itemCount: level.length,
+              padding: const EdgeInsets.all(12),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12),
+                    onTap: () {
+                      // TODO: navigate based on level
+                    },
+                    child: Container(
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.15),
+                            blurRadius: 8,
+                            offset: const Offset(0, 5),
                           ),
-                          child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Beginner", style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w300,
-                                fontFamily: 'Kufam',
-                              ),
-                              )
-                            ],
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          level[index],
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Kufam',
                           ),
                         ),
-                      );
-
-                    },
+                      ),
                     ),
                   ),
-
-
-                ],
-              ),
+                );
+              },
             ),
           ),
-        ],
+        ),
       ),
     );
   }

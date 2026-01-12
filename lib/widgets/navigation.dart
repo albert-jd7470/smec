@@ -20,8 +20,8 @@ class _BottomNavigState extends State<BottomNavig> {
     Homepage(),
     Homepage(),
     Homepage(),
-
-    ProfilePage(),
+    ProfilePage()
+    // ProfilePage(),
 
   ];
 
