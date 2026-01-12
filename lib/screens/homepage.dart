@@ -20,6 +20,16 @@ class _HomepageState extends State<Homepage> {
     "Graphics Designing & Film Editing",
     "MERN Stack Development",
   ];
+  final List<String> courseimg = [
+    "assets/icons/ui-ux.png",
+    "assets/icons/software-test.png",
+    "assets/icons/python.png",
+    "assets/icons/full-stack.png",
+    "assets/icons/flutter.png",
+    "assets/icons/networking.png",
+    "assets/icons/designer.png",
+    "assets/icons/mern.png",
+];
 
   @override
   Widget build(BuildContext context) {
@@ -189,27 +199,18 @@ class _HomepageState extends State<Homepage> {
                     },
                     child: Container(
                       width: 130,
-                      margin: const EdgeInsets.only(right: 14),
+                      margin: const EdgeInsets.only(right: 8),
                       child: Column(
                         children: [
-                          Container(
-                            height: 90,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              color: Colors.teal,
-                              borderRadius: BorderRadius.circular(14),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 5),
-                                ),
-                              ],
-                            ),
-                            child: const Icon(
-                              Icons.school,
-                              color: Colors.white,
-                              size: 36,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 80,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(image: AssetImage(courseimg[index])),
+
+                              ),
                             ),
                           ),
                           const SizedBox(height: 8),

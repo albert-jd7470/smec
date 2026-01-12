@@ -88,7 +88,6 @@ class _OnboardState extends State<Onboard> with SingleTickerProviderStateMixin {
       );
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,11 +105,9 @@ class _OnboardState extends State<Onboard> with SingleTickerProviderStateMixin {
             },
             itemBuilder: (context, index) {
               final page = _pages[index];
-
               return Stack(
                 fit: StackFit.expand,
                 children: [
-                  // PARALLAX IMAGE + ZOOM
                   AnimatedBuilder(
                     animation: _scaleAnim,
                     builder: (_, child) {
