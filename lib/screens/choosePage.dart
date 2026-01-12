@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smec/screens/homepage.dart';
+import 'package:smec/screens/quizScreen.dart';
 
 class ChoosePage extends StatefulWidget {
   const ChoosePage({super.key});
@@ -9,11 +10,7 @@ class ChoosePage extends StatefulWidget {
 }
 
 class _ChoosePageState extends State<ChoosePage> {
-  final List<String> level = [
-    "Beginner",
-    "Medium",
-    "Professional",
-  ];
+  final List<String> level = ["Beginner", "Medium", "Professional"];
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +23,7 @@ class _ChoosePageState extends State<ChoosePage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_sharp,
-            color: Colors.teal,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.teal),
         ),
       ),
       body: Center(
@@ -59,7 +53,10 @@ class _ChoosePageState extends State<ChoosePage> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(12),
                     onTap: () {
-                      // TODO: navigate based on level
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QuizScreen(category: level[index],)),
+                      );
                     },
                     child: Container(
                       height: 90,
