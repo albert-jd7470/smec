@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.teal,
+    return Scaffold(backgroundColor: Colors.black,
       body: Center(child: Lottie.asset('assets/smec.json')),
     );
   }
