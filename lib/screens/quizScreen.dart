@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smec/screens/scorepage.dart';
 
 class QuizScreen extends StatefulWidget {
   final String category;
@@ -29,14 +30,12 @@ class _QuizScreenState extends State<QuizScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_sharp,
-            color: Colors.teal,
-          ),
-        ),        title: Column(
-          children: const [
+          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.teal),
+        ),
+        title: Column(
+          children: [
             Text(
-              "HTML",
+              widget.category,
               style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -107,7 +106,10 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 12),
                         padding: const EdgeInsets.all(14),
+                        height: 65,
+                        width: double.maxFinite,
                         decoration: BoxDecoration(
+                          border: Border.all(color: Colors.teal),
                           color: isSelected ? Colors.teal : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
@@ -117,11 +119,13 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                           ],
                         ),
-                        child: Text(
-                          options[index],
-                          style: TextStyle(
-                            color: isSelected ? Colors.white : Colors.black87,
-                            fontWeight: FontWeight.w500,
+                        child: Center(
+                          child: Text(
+                            options[index],
+                            style: TextStyle(
+                              color: isSelected ? Colors.white : Colors.black87,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -129,8 +133,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   }),
 
                   const SizedBox(height: 8),
-
-                  // See Result
                   TextButton(
                     onPressed: () {},
                     child: const Text(
@@ -148,7 +150,6 @@ class _QuizScreenState extends State<QuizScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -161,9 +162,17 @@ class _QuizScreenState extends State<QuizScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
-                    "Next",
-                    style: TextStyle(color: Colors.white),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ScorePage()),
+                      );
+                    },
+                    child: const Text(
+                      "Next",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],
