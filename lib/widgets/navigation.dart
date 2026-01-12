@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smec/screens/challenge_page.dart';
 import 'package:smec/screens/homepage.dart';
 
 import 'package:smec/screens/profile.dart';
@@ -18,7 +19,7 @@ class _BottomNavigState extends State<BottomNavig> {
   final List<Widget> _pages = const [
     Homepage(),
     Homepage(),
-    Homepage(),
+    ChallengePage(),
     Homepage(),
 
     ProfilePage(),

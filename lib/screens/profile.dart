@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smec/screens/loadingscreen.dart';
+import 'package:smec/screens/onboard.dart';
 import 'package:smec/screens/settings.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -139,7 +140,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     icon: Icons.logout,
                     label: 'Logout',
                     color: Colors.redAccent,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Loadingscreen(nextPage: Onboard()),),
+                      );
+                    },
                   ),
                 ],
               ),

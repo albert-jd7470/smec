@@ -8,11 +8,8 @@ plugins {
 android {
     namespace = "com.example.smec"
     compileSdk = flutter.compileSdkVersion
-<<<<<<< HEAD
     ndkVersion = flutter.ndkVersion
-=======
     ndkVersion = "25.1.8937393"
->>>>>>> settings-light-ui
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
