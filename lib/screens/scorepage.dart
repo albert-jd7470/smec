@@ -69,34 +69,39 @@ class _ScorePageState extends State<ScorePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNavig(),));
+            const SizedBox(height: 15),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BottomNavig()),
+                      (route) => false,
+                );
               },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 65,
-                  width: double.maxFinite,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.teal,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child:  Center(
+                  child: const Center(
                     child: Text(
                       "Back To Home",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                          fontFamily: "Kufam"
-
+                        fontFamily: "Kufam",
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+
           ],
         ),
       ),
