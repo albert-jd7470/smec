@@ -10,6 +10,8 @@ class SoloBattlePage extends StatefulWidget {
 }
 
 class _SoloBattlePageState extends State<SoloBattlePage> {
+  static const Color primaryTeal = Color(0xFF0FA3A9);
+
   int currentIndex = 0;
   int score = 0;
   int timeLeft = 15;
@@ -84,52 +86,107 @@ class _SoloBattlePageState extends State<SoloBattlePage> {
     final q = questions[currentIndex];
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0E1F2F),
+      backgroundColor: const Color(0xFFF4FAFA),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Solo Battle'),
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          'Solo Battle',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: primaryTeal,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        iconTheme: const IconThemeData(color: primaryTeal),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ===== QUESTION COUNT =====
             Text(
-              'Question ${currentIndex + 1}/${questions.length}',
-              style: const TextStyle(color: Colors.white70),
+              'Question ${currentIndex + 1} / ${questions.length}',
+              style: const TextStyle(
+                fontFamily: 'Poppins',
+                color: Colors.grey,
+              ),
             ),
+
             const SizedBox(height: 10),
 
-            LinearProgressIndicator(
-              value: timeLeft / 15,
-              color: Colors.redAccent,
-              backgroundColor: Colors.white12,
-            ),
-
-            const SizedBox(height: 30),
-
-            Text(
-              q['question'],
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
+            // ===== TIMER BAR =====
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: LinearProgressIndicator(
+                value: timeLeft / 15,
+                minHeight: 8,
+                color: primaryTeal,
+                backgroundColor: primaryTeal.withOpacity(0.2),
               ),
             ),
 
             const SizedBox(height: 30),
 
+            // ===== QUESTION =====
+            Text(
+              q['question'],
+              style: const TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF102A43),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // ===== OPTIONS =====
             ...q['options'].map<Widget>((opt) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF152A3A),
+                padding: const EdgeInsets.only(bottom: 14),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(18),
+                  onTap: () => _selectAnswer(opt),
+                  child: Container(
                     padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 12,
+                          offset: const Offset(0, 6),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 18,
+                          backgroundColor:
+                          primaryTeal.withOpacity(0.15),
+                          child: const Icon(
+                            Icons.circle,
+                            size: 10,
+                            color: primaryTeal,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          opt,
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF102A43),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  onPressed: () => _selectAnswer(opt),
-                  child: Text(opt),
                 ),
               );
             }).toList(),
