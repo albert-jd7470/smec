@@ -106,16 +106,16 @@ class _FavoritePageState extends State<FavoritePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Column(
+                    Column(crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Who is making the Web standards?",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500,color: Colors.teal),
                         ),
                         Text(
-                          "Who is making the Web standards?",
-                          style: TextStyle(fontSize: 15, fontFamily: "Poppins"),
+                          " Ans: The World Wide Web",
+                          style: TextStyle(fontSize: 15, fontFamily: "poppins",color: Colors.black38),
                         ),
                       ],
                     ),
