@@ -12,7 +12,7 @@ class ChoosePage extends StatefulWidget {
 
 class _ChoosePageState extends State<ChoosePage> {
 
-  final List<String> level = ["Beginner", "Medium", "Professional"];
+  final List<String> level = ["Beginner", "Intermediator", "Professional"];
 
   @override
   Widget build(BuildContext context) {
