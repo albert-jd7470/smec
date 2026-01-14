@@ -92,8 +92,6 @@ class _ChoosePageState extends State<ChoosePage> {
                 ),
 
                 const SizedBox(height: 20),
-
-                /// 🔹 Levels List
                 Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
