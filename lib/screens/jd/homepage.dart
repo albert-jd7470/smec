@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smec/screens/choosePage.dart';
+import 'package:smec/screens/jd/choosePage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -126,7 +126,7 @@ class _HomepageState extends State<Homepage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Row(
+                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
                               child: TextFormField(
@@ -136,6 +136,10 @@ class _HomepageState extends State<Homepage> {
                                   hintStyle: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w300,
+                                    ),
+                                  suffixIcon: Icon(
+                                    Icons.search,
+                                    color: Colors.teal,
                                   ),
                                 ),
                                 style: TextStyle(
@@ -174,15 +178,14 @@ class _HomepageState extends State<Homepage> {
                     style: TextStyle(
                       color: Colors.teal,
                       fontSize: 18,
-                      fontFamily: 'Kufam',
+                      fontFamily: 'Poppins',
                     ),
                   ),
                 ),
               ],
             ),
-
             SizedBox(
-              height: 150, // 🔥 required
+              height: 130,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: courses.length,
@@ -205,7 +208,7 @@ class _HomepageState extends State<Homepage> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              height: 80,
+                              height: 60,
                               width: 90,
                               decoration: BoxDecoration(
                                 image: DecorationImage(image: AssetImage(courseimg[index])),
@@ -221,9 +224,9 @@ class _HomepageState extends State<Homepage> {
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               color: Colors.teal,
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'Kufam',
+                              fontFamily: 'Poppins',
                             ),
                           ),
                         ],
@@ -242,7 +245,7 @@ class _HomepageState extends State<Homepage> {
                     style: TextStyle(
                       color: Colors.teal,
                       fontSize: 18,
-                      fontFamily: 'Kufam',
+                      fontFamily: 'Poppins',
                     ),
                   ),
                 ),
@@ -262,7 +265,7 @@ class _HomepageState extends State<Homepage> {
                       color: Colors.black.withOpacity(0.12),
                       blurRadius: 10,
                       spreadRadius: 2,
-                      offset: const Offset(0, 7), // x, y
+                      offset: const Offset(0, 7),
                     ),
                   ],
                 ),

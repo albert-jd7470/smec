@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smec/screens/homepage.dart';
-import 'package:smec/screens/quizScreen.dart';
+import 'package:smec/screens/jd/homepage.dart';
+import 'package:smec/screens/jd/quizScreen.dart';
 
 class ChoosePage extends StatefulWidget {
   const ChoosePage({super.key});

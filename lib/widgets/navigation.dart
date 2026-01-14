@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smec/screens/challenge_page.dart';
-import 'package:smec/screens/homepage.dart';
+import 'package:smec/screens/jd/homepage.dart';
 
 import 'package:smec/screens/profile.dart';
+
+import '../screens/jd/favoritePage.dart';
 
 
 class BottomNavig extends StatefulWidget {
@@ -20,7 +22,7 @@ class _BottomNavigState extends State<BottomNavig> {
     Homepage(),
     Homepage(),
     ChallengePage(),
-    Homepage(),
+    FavoritePage(),
     ProfilePage()
     // ProfilePage(),
 
