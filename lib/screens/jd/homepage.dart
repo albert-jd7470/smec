@@ -13,7 +13,7 @@ class _HomepageState extends State<Homepage> {
   final List<String> courses = [
     "UI/UX",
     "Software Testing",
-    "Python Full Stack ",
+    "Python Full Stack",
     "Full Stack",
     "Flutter ",
     "Networking",
@@ -196,7 +196,7 @@ class _HomepageState extends State<Homepage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ChoosePage(),
+                          builder: (context) =>  ChoosePage(course: courses[index], courseicon: courseimg[index],),
                         ),
                       );
                     },

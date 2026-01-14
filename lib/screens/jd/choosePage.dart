@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:smec/screens/jd/homepage.dart';
 import 'package:smec/screens/jd/quizScreen.dart';
 
 class ChoosePage extends StatefulWidget {
-  const ChoosePage({super.key});
+  final String course;
+  final String courseicon;
+  const ChoosePage({super.key, required this.course, required this.courseicon});
 
   @override
   State<ChoosePage> createState() => _ChoosePageState();
 }
 
 class _ChoosePageState extends State<ChoosePage> {
+
   final List<String> level = ["Beginner", "Medium", "Professional"];
 
   @override
@@ -20,9 +22,7 @@ class _ChoosePageState extends State<ChoosePage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.teal),
         ),
       ),
@@ -30,7 +30,7 @@ class _ChoosePageState extends State<ChoosePage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-            height: 380, // 🔥 important
+            height: 440,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -44,48 +44,105 @@ class _ChoosePageState extends State<ChoosePage> {
                 ),
               ],
             ),
-            child: ListView.builder(
-              itemCount: level.length,
-              padding: const EdgeInsets.all(12),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(12),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => QuizScreen(category: level[index],)),
-                      );
-                    },
-                    child: Container(
-                      height: 90,
-                      decoration: BoxDecoration(
+            child: Column(
+              children: [
+
+                const SizedBox(height: 16),
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage(widget.courseicon),fit: BoxFit.cover),
+
+
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+
+                 Row(mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Text(
+                      widget.course ,
+                      style: TextStyle(
+                        fontSize: 22,
                         color: Colors.teal,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
-                            blurRadius: 8,
-                            offset: const Offset(0, 5),
-                          ),
-                        ],
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Kufam',
                       ),
-                      child: Center(
-                        child: Text(
-                          level[index],
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Kufam',
+                                     ),
+                     Text(
+                      " Course" ,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Kufam',
+                      ),
+                                     ),
+                   ],
+                 ),
+
+                const SizedBox(height: 4),
+                const Text(
+                  "Select Your Skill Level",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black54,
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                /// 🔹 Levels List
+                Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    itemCount: level.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    QuizScreen(category: level[index]),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 70,
+                            decoration: BoxDecoration(
+                              color: Colors.teal,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.15),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Text(
+                                level[index],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Kufam',
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ),
         ),
