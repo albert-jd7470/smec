@@ -17,13 +17,13 @@ class _ChoosePageState extends State<ChoosePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.teal,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.teal,
         elevation: 0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.teal),
+          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
         ),
       ),
       body: Center(
@@ -64,13 +64,13 @@ class _ChoosePageState extends State<ChoosePage> {
                    children: [
                      Text(
                       widget.course ,
-                      style: TextStyle(
+                       style: TextStyle(
                         fontSize: 22,
                         color: Colors.teal,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Kufam',
                       ),
-                                     ),
+                     ),
                      Text(
                       " Course" ,
                       style: TextStyle(

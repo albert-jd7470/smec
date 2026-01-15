@@ -22,29 +22,29 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FB),
+      backgroundColor: Colors.teal,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.teal,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.teal),
+          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
         ),
         title: Column(
           children: [
             Text(
               widget.category,
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 2),
             Text(
               "30 Question",
-              style: TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: Colors.white54),
             ),
           ],
         ),
@@ -164,7 +164,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
             // Bottom Buttons
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
                   onPressed: () {},
@@ -185,9 +185,30 @@ class _QuizScreenState extends State<QuizScreen> {
                         MaterialPageRoute(builder: (context) => ScorePage()),
                       );
                     },
+                    child:Icon(Icons.favorite, color: Colors.white)
+                  ),
+                ), ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 14,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ScorePage()),
+                      );
+                    },
                     child: const Text(
                       "Next",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.teal),
                     ),
                   ),
                 ),

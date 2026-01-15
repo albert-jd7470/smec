@@ -18,7 +18,8 @@ class _HomepageState extends State<Homepage> {
     "Full Stack",
     "Flutter ",
     "Networking",
-    "Graphics Designing & Film Editing",
+    "Graphics Designing",
+    "Film Editing",
     "MERN Stack Development",
   ];
   final List<String> courseimg = [
@@ -29,6 +30,7 @@ class _HomepageState extends State<Homepage> {
     "assets/icons/flutter.png",
     "assets/icons/networking.png",
     "assets/icons/designer.png",
+    "assets/icons/filim.png",
     "assets/icons/mern.png",
 ];
 

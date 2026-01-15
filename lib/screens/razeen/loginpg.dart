@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               // Logo
               Image.asset(
-                "assets/img.png",
+                "assets/smeclogo.png",
                 height: 200,
                 width: 400,
               ),
