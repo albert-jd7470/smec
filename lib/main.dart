@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smec/screens/homepage.dart';
+
 import 'package:smec/screens/splash_screen.dart';
 
 import 'package:smec/widgets/navigation.dart';
