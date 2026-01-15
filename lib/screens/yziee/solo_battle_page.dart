@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'solo_result_page.dart';
+import 'package:smec/screens/jd/scorepage.dart';
+import 'package:smec/screens/yziee/solo_result_page.dart';
 
 class SoloBattlePage extends StatefulWidget {
   const SoloBattlePage({super.key});
@@ -69,7 +70,7 @@ class _SoloBattlePageState extends State<SoloBattlePage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => SoloResultPage(),
+          builder: (_) => ScorePage(),
         ),
       );
     }

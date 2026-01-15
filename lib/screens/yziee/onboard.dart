@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:smec/screens/jd/homepage.dart';
-import 'package:smec/screens/loadingscreen.dart';
 import 'package:smec/widgets/navigation.dart';
+
+import 'loadingscreen.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({super.key});

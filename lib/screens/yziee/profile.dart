@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smec/screens/loadingscreen.dart';
-import 'package:smec/screens/onboard.dart';
-import 'package:smec/screens/settings.dart';
+import 'package:smec/screens/yziee/settings.dart';
+import 'loadingscreen.dart';
+import 'onboard.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -19,14 +19,20 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: const Color(0xFFF4FAFA),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ===== HEADER =====
+
+              // ================= HEADER =================
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 24, 20, 30),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [primaryTeal, primaryTeal.withOpacity(0.85)],
+                    colors: [
+                      primaryTeal,
+                      primaryTeal.withOpacity(0.85),
+                    ],
                   ),
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(36),
@@ -39,15 +45,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                          icon:
-                          const Icon(Icons.settings, color: Colors.white),
+                          icon: const Icon(Icons.settings, color: Colors.white),
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => Loadingscreen(
-                                  nextPage: SettingsPage(),
-                                ),
+                                builder: (_) =>
+                                    Loadingscreen(nextPage: SettingsPage()),
                               ),
                             );
                           },
@@ -70,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     const SizedBox(height: 14),
                     const Text(
-                      'username',
+                      'Username',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 20,
@@ -92,6 +96,8 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
 
               const SizedBox(height: 24),
+
+              // ================= BASIC INFO =================
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -113,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 30),
 
-              // ===== RECENT MATCHES =====
+              // ================= RECENT MATCHES =================
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _sectionTitle('Recent Matches'),
@@ -137,12 +143,70 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 30),
 
-              // ===== MATCH HISTORY =====
+              // ================= PERFORMANCE OVERVIEW =================
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: _sectionTitle('Performance Overview'),
+              ),
+              const SizedBox(height: 12),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _statCard(
+                        title: 'Global Rank',
+                        value: '#124',
+                        icon: Icons.public,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: _statCard(
+                        title: 'Regional Rank',
+                        value: '#8',
+                        icon: Icons.location_on,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 14),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _statCard(
+                        title: 'Selected Study',
+                        value: 'Flutter',
+                        icon: Icons.school,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: _statCard(
+                        title: 'Total Points',
+                        value: '3,450',
+                        icon: Icons.star,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              // ================= MATCH HISTORY =================
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _sectionTitle('Match History'),
               ),
               const SizedBox(height: 12),
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -162,7 +226,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 30),
 
-              // ===== ACTION BUTTONS =====
+              // ================= ACTION BUTTONS =================
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -196,6 +260,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+
               const SizedBox(height: 30),
             ],
           ),
@@ -204,7 +269,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ===== SECTION TITLE =====
+  // ================= SECTION TITLE =================
   Widget _sectionTitle(String title) {
     return Text(
       title,
@@ -217,7 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ===== INFO TILE =====
+  // ================= INFO TILE =================
   Widget _infoTile({
     required IconData icon,
     required String title,
@@ -225,17 +290,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+      decoration: _cardDecoration(),
       child: Row(
         children: [
           CircleAvatar(
@@ -270,7 +325,59 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ===== RECENT MATCH CARD =====
+  // ================= STAT CARD =================
+  Widget _statCard({
+    required String title,
+    required String value,
+    required IconData icon,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            primaryTeal.withOpacity(0.95),
+            primaryTeal.withOpacity(0.8),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: primaryTeal.withOpacity(0.25),
+            blurRadius: 14,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: Colors.white70),
+          const SizedBox(height: 12),
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 12,
+              color: Colors.white70,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ================= RECENT MATCH CARD =================
   Widget _recentMatchCard({
     required String match,
     required String result,
@@ -280,17 +387,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Container(
       width: 150,
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+      decoration: _cardDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -325,7 +422,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ===== HISTORY TILE =====
+  // ================= HISTORY TILE =================
   Widget _historyTile({
     required String matchName,
     required String date,
@@ -335,17 +432,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
+      decoration: _cardDecoration(),
       child: Row(
         children: [
           CircleAvatar(
@@ -391,7 +478,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // ===== ACTION BUTTON =====
+  // ================= ACTION BUTTON =================
   Widget _actionButton({
     required IconData icon,
     required String label,
@@ -403,17 +490,7 @@ class _ProfilePageState extends State<ProfilePage> {
       borderRadius: BorderRadius.circular(18),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 12,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
+        decoration: _cardDecoration(),
         child: Row(
           children: [
             Icon(icon, color: color),
@@ -433,6 +510,21 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
+    );
+  }
+
+  // ================= COMMON CARD DECORATION =================
+  BoxDecoration _cardDecoration() {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(18),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 12,
+          offset: const Offset(0, 6),
+        ),
+      ],
     );
   }
 }

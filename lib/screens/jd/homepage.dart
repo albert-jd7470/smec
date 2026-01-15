@@ -58,6 +58,7 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins'
                       ),
                     ),
                   ),
@@ -97,7 +98,8 @@ class _HomepageState extends State<Homepage> {
                         style: TextStyle(
                           color: Colors.teal,
                           fontSize: 25,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Poppins"
                         ),
                       ),
                     ],
