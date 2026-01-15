@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     const SizedBox(height: 14),
                     const Text(
-                      'Apple Kadiyan',
+                      'username',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 20,
@@ -80,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     const SizedBox(height: 4),
                     const Text(
-                      'applekadiyan@email.com',
+                      'username@email.com',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 13,
@@ -92,8 +92,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
 
               const SizedBox(height: 24),
-
-              // ===== INFO =====
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
