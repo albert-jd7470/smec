@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smec/screens/jd/choosePage.dart';
+import 'package:smec/screens/jd/recentQuizz.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -119,32 +120,34 @@ class _HomepageState extends State<Homepage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 65,
+                      height: 55,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.teal),
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        padding: const EdgeInsets.only(left: 20,top: 8,bottom: 8),
+                        child: Row(
                           children: [
                             Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: "Search",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w300,
+                              child: Center(
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Search",
+                                    hintStyle: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w300,
+                                      ),
+                                    suffixIcon: Icon(
+                                      Icons.search,
+                                      color: Colors.teal,
                                     ),
-                                  suffixIcon: Icon(
-                                    Icons.search,
-                                    color: Colors.teal,
                                   ),
-                                ),
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
@@ -169,11 +172,11 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
             SizedBox(height: 25),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Row(
+                children: [
+                  Text(
                     "Categories",
                     style: TextStyle(
                       color: Colors.teal,
@@ -181,8 +184,8 @@ class _HomepageState extends State<Homepage> {
                       fontFamily: 'Poppins',
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
               height: 130,
@@ -236,11 +239,12 @@ class _HomepageState extends State<Homepage> {
                 },
               ),
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
+            SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Row(
+                children: [
+                  Text(
                     "Recent Activity",
                     style: TextStyle(
                       color: Colors.teal,
@@ -248,10 +252,103 @@ class _HomepageState extends State<Homepage> {
                       fontFamily: 'Poppins',
                     ),
                   ),
-                ),
-              ],
+                  const Spacer(),
+                  Icon(Icons.arrow_forward_ios,color: Colors.teal,)
+                ],
+              ),
             ),
             SizedBox(height: 25),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RecentQuizz(),));
+              },
+                child: Container(
+                  height: 100,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.12),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        offset: const Offset(0, 7), // x, y
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 50,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage("assets/icons/python.png")),
+
+                          ),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              "Python Full Stack ",
+                              style: TextStyle(
+                                color: Colors.teal,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Kufam',
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              "30 questions",
+                              style: TextStyle(
+                                color: Colors.teal,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Kufam',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(color: Colors.green, width: 5),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "28/30",
+                              style: TextStyle(
+                                color: Colors.teal,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                fontFamily: 'Kufam',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -274,11 +371,11 @@ class _HomepageState extends State<Homepage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        width: 100,
-                        height: 80,
+                        height: 50,
+                        width: 90,
                         decoration: BoxDecoration(
-                          color: Colors.black12,
-                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(image: AssetImage("assets/icons/flutter.png")),
+
                         ),
                       ),
                     ),
@@ -289,7 +386,7 @@ class _HomepageState extends State<Homepage> {
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Text(
-                            "HTML",
+                            "Flutter",
                             style: TextStyle(
                               color: Colors.teal,
                               fontSize: 18,
@@ -322,6 +419,17 @@ class _HomepageState extends State<Homepage> {
                           borderRadius: BorderRadius.circular(100),
                           border: Border.all(color: Colors.red, width: 5),
                         ),
+                        child: Center(
+                          child: Text(
+                            "9/30",
+                            style: TextStyle(
+                              color: Colors.teal,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Kufam',
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -350,11 +458,11 @@ class _HomepageState extends State<Homepage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        width: 100,
-                        height: 80,
+                        height: 50,
+                        width: 90,
                         decoration: BoxDecoration(
-                          color: Colors.black12,
-                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(image: AssetImage("assets/icons/dart.png")),
+
                         ),
                       ),
                     ),
@@ -397,6 +505,17 @@ class _HomepageState extends State<Homepage> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
                           border: Border.all(color: Colors.yellow, width: 5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "18/30",
+                            style: TextStyle(
+                              color: Colors.teal,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Kufam',
+                            ),
+                          ),
                         ),
                       ),
                     ),
