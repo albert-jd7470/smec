@@ -90,10 +90,22 @@ class _FavoritePageState extends State<FavoritePage> {
     favoriteQuestions[selectedCategory]!;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          "Favorite Questions",
+          style: TextStyle(
+            color: Colors.teal,
+            fontSize: 18,
+            fontFamily: 'Poppins',
+          ),
+        ),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const SizedBox(height: 100),
+          const SizedBox(height: 45),
 
           //-------Category
           SingleChildScrollView(

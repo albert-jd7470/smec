@@ -19,11 +19,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
   ];
 
   final List<Map<String, dynamic>> leaderboardData = [
-    {"rank": 1, "name": "Arjun R", "score": 980, "accuracy": "98%"},
-    {"rank": 2, "name": "Sneha K", "score": 950, "accuracy": "95%"},
-    {"rank": 3, "name": "Rahul M", "score": 920, "accuracy": "92%"},
-    {"rank": 4, "name": "Anjali S", "score": 890, "accuracy": "89%"},
-    {"rank": 5, "name": "Vishnu P", "score": 860, "accuracy": "86%"},
+    {"rank": 1, "name": "Yazi", "score": 980, "accuracy": "98%"},
+    {"rank": 2, "name": "Vinayak", "score": 950, "accuracy": "95%"},
+    {"rank": 3, "name": "Razeen", "score": 920, "accuracy": "92%"},
+    {"rank": 4, "name": "Govind", "score": 890, "accuracy": "89%"},
+    {"rank": 5, "name": "Nihala", "score": 860, "accuracy": "86%"},
   ];
 
   Color rankColor(int rank) {
@@ -41,26 +41,25 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF4F8FB),
+      backgroundColor:Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        centerTitle: true,
-        title: const Text(
-          "Leaderboard",
+        title:  Text(
+          "LeaderBoard",
           style: TextStyle(
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Colors.teal,
+            fontSize: 18,
+            fontFamily: 'Poppins',
           ),
         ),
+        centerTitle: true,
       ),
       body: Column(
         children: [
-
-          /// SUBJECT SELECTOR (YOUR EXACT SHAPE)
+          const SizedBox(height: 45),
           SizedBox(
-            height: 60,
+            height: 45,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
