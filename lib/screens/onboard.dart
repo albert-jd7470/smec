@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:smec/screens/homepage.dart';
+import 'package:smec/screens/jd/homepage.dart';
 import 'package:smec/screens/loadingscreen.dart';
 import 'package:smec/widgets/navigation.dart';
 

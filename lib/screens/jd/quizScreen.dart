@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smec/screens/scorepage.dart';
+import 'package:smec/screens/jd/scorepage.dart';
 
 class QuizScreen extends StatefulWidget {
   final String category;
@@ -70,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Question Header
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
@@ -86,14 +86,30 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Question
-                  const Text(
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child:  Center(
+                          child: Text(
+                            "1",
+                            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                   Text(
                     "Who is making the Web standards?",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 20),
-
-                  // Options
+                   SizedBox(height: 20),
                   ...List.generate(options.length, (index) {
                     final isSelected = selectedIndex == index;
 
